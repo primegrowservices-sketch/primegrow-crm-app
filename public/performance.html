@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Employee Performance</title>
+
+<style>
+
+body{
+background:#0b0b0b;
+color:white;
+font-family:Arial;
+text-align:center;
+}
+
+table{
+margin:auto;
+border-collapse:collapse;
+width:80%;
+}
+
+th,td{
+border:1px solid #444;
+padding:10px;
+}
+
+th{
+background:#00ff88;
+color:black;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Employee Performance</h1>
+
+<table id="perf">
+
+<tr>
+<th>Employee</th>
+<th>Calls</th>
+<th>Interested</th>
+<th>Audit</th>
+<th>Sales</th>
+<th>Commission</th>
+</tr>
+
+</table>
+
+<script>
+
+fetch("/performance")
+.then(res=>res.json())
+.then(data=>{
+
+let table=document.getElementById("perf")
+
+data.forEach(e=>{
+
+let row=`
+<tr>
+<td>${e.name}</td>
+<td>${e.calls}</td>
+<td>${e.interested}</td>
+<td>${e.audit}</td>
+<td>${e.sales}</td>
+<td>${e.commission}</td>
+</tr>
+`
+
+table.innerHTML+=row
+
+})
+
+})
+
+async function load(){
+
+let res = await fetch('/performance')
+let data = await res.json()
+
+let table = document.getElementById("perf")
+
+data.forEach(e=>{
+
+let row = `
+<tr>
+<td>${e.name}</td>
+<td>${e.calls}</td>
+<td>${e.interested}</td>
+<td>${e.audit}</td>
+<td>${e.sales}</td>
+<td>₹${e.commission}</td>
+</tr>
+`
+
+table.innerHTML += row
+
+})
+
+}
+
+load()
+
+</script>
+
+
+</body>
+</html>

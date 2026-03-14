@@ -1,0 +1,18 @@
+{
+  "employees":[
+    {
+      "name":"emp1",
+      "interested":0,
+      "audit":0,
+      "sales":0,
+      "commission":0
+    },
+    {
+      "name":"emp2",
+      "interested":0,
+      "audit":0,
+      "sales":0,
+      "commission":0
+    }
+  ]
+}
