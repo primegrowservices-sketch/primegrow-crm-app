@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>PrimeGrow Telecaller Training</title>
+
+<style>
+
+body{
+background:#0b0f19;
+color:white;
+font-family:Arial;
+padding:25px;
+}
+
+h1{
+text-align:center;
+color:#00e6a8;
+}
+
+h2{
+color:#00e6a8;
+margin-top:25px;
+}
+
+.box{
+background:#111;
+padding:20px;
+border-radius:10px;
+margin-top:20px;
+}
+
+button{
+background:#00e6a8;
+border:none;
+padding:10px 15px;
+border-radius:6px;
+font-weight:bold;
+cursor:pointer;
+margin-top:10px;
+}
+
+input{
+padding:8px;
+width:100%;
+margin-top:8px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>PrimeGrow Telecaller Training</h1>
+
+
+<div class="box">
+
+<h2>🎥 Video Training</h2>
+
+<iframe width="100%" height="250"
+src="https://www.youtube.com/embed/3GwjfUFyY6M"
+frameborder="0"
+allowfullscreen>
+</iframe>
+
+</div>
+
+
+<div class="box">
+
+<h2>📞 Call Recording Example</h2>
+
+<audio controls>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+</audio>
+
+</div>
+
+
+<div class="box">
+
+<h2>🧠 AI Call Script Generator</h2>
+
+<input id="business" placeholder="Business Type (e.g. Dentist)">
+
+<button onclick="generateScript()">Generate Script</button>
+
+<p id="script"></p>
+
+</div>
+
+
+<div class="box">
+
+<h2>📊 Telecaller Test</h2>
+
+<p>1. What should you offer first?</p>
+<input id="q1">
+
+<p>2. Goal of the call?</p>
+<input id="q2">
+
+<p>3. What if customer says not interested?</p>
+<input id="q3">
+
+<button onclick="checkTest()">Submit Test</button>
+
+<h3 id="result"></h3>
+
+</div>
+
+
+<div class="box">
+
+<h2>📊 Employee Performance</h2>
+
+<p>Total Calls</p>
+<input id="calls">
+
+<p>Interested Leads</p>
+<input id="leads">
+
+<p>Sales Closed</p>
+<input id="sales">
+
+<button onclick="calculateScore()">Calculate Score</button>
+
+<h3 id="score"></h3>
+
+</div>
+
+
+<div class="box">
+
+<h2>🎧 Upload Call Recording</h2>
+
+<input type="file" id="callFile">
+
+<button onclick="uploadCall()">Upload</button>
+
+<p id="uploadStatus"></p>
+
+</div>
+
+
+<div class="box">
+
+<h2>🏆 Telecaller Leaderboard</h2>
+
+<input id="empName" placeholder="Employee Name">
+
+<input id="empScore" placeholder="Score">
+
+<button onclick="addLeaderboard()">Add Score</button>
+
+<ul id="leaderboard"></ul>
+
+</div>
+
+
+<script>
+
+function generateScript(){
+
+let business=document.getElementById("business").value
+
+let text="Hello sir, I am calling from PrimeGrow Services. We help "+business+" businesses get more customers through Google Business optimization. We are offering a FREE audit of your Google listing. Would you like to see your report?"
+
+document.getElementById("script").innerText=text
+
+}
+
+
+function checkTest(){
+
+let score=0
+
+let q1=document.getElementById("q1").value.toLowerCase()
+let q2=document.getElementById("q2").value.toLowerCase()
+let q3=document.getElementById("q3").value.toLowerCase()
+
+if(q1.includes("audit")) score++
+if(q2.includes("lead")) score++
+if(q3.includes("question")) score++
+
+document.getElementById("result").innerText="Score: "+score+"/3"
+
+}
+
+
+function calculateScore(){
+
+let calls=document.getElementById("calls").value
+let leads=document.getElementById("leads").value
+let sales=document.getElementById("sales").value
+
+let score=(calls*1)+(leads*5)+(sales*10)
+
+document.getElementById("score").innerText="Performance Score: "+score
+
+}
+
+
+function uploadCall(){
+
+let file=document.getElementById("callFile").files[0]
+
+if(file){
+
+document.getElementById("uploadStatus").innerText="Call recording uploaded: "+file.name
+
+}
+
+}
+
+
+let board=[]
+
+function addLeaderboard(){
+
+let name=document.getElementById("empName").value
+let score=document.getElementById("empScore").value
+
+board.push({name:name,score:score})
+
+board.sort((a,b)=>b.score-a.score)
+
+let list=""
+
+for(let i=0;i<board.length;i++){
+
+list+="<li>"+board[i].name+" - "+board[i].score+"</li>"
+
+}
+
+document.getElementById("leaderboard").innerHTML=list
+
+}
+
+</script>
+
+
+</body>
+</html>

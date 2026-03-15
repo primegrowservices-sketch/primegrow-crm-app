@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>PrimeGrow Admin Panel</title>
+
+<style>
+
+body{
+background:#0b0f19;
+color:white;
+font-family:Arial;
+padding:30px;
+}
+
+h1{
+color:#00e6a8;
+}
+
+table{
+width:100%;
+margin-top:20px;
+border-collapse:collapse;
+}
+
+th,td{
+border:1px solid #333;
+padding:10px;
+text-align:center;
+}
+
+button{
+background:red;
+color:white;
+border:none;
+padding:6px 10px;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Admin Panel</h1>
+
+<h2>Employee List</h2>
+
+<table>
+
+<tr>
+<th>Name</th>
+<th>Email</th>
+<th>Action</th>
+</tr>
+
+<tbody id="empTable"></tbody>
+
+</table>
+
+<script>
+
+let users=JSON.parse(localStorage.getItem("users"))||[]
+
+function loadEmployees(){
+
+let html=""
+
+for(let i=0;i<users.length;i++){
+
+if(users[i].role=="employee"){
+
+html+=`
+<tr>
+<td>${users[i].name}</td>
+<td>${users[i].email}</td>
+<td><button onclick="deleteEmp(${i})">Delete</button></td>
+</tr>
+`
+
+}
+
+}
+
+document.getElementById("empTable").innerHTML=html
+
+}
+
+function deleteEmp(i){
+
+users.splice(i,1)
+
+localStorage.setItem("users",JSON.stringify(users))
+
+loadEmployees()
+
+}
+
+loadEmployees()
+
+</script>
+
+</body>
+</html>
