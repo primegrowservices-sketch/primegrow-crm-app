@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Call Logs</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+body{
+background:#0b0f19;
+font-family:Arial;
+color:white;
+margin:0;
+}
+
+.header{
+padding:20px;
+font-size:22px;
+font-weight:bold;
+}
+
+.tabs{
+display:flex;
+gap:20px;
+padding:10px 20px;
+}
+
+.tab{
+padding-bottom:5px;
+border-bottom:2px solid transparent;
+}
+
+.active{
+border-bottom:2px solid #00ff9c;
+color:#00ff9c;
+}
+
+.calls{
+padding:15px;
+}
+
+.call{
+background:#111;
+padding:15px;
+border-radius:12px;
+margin-bottom:12px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 0 10px #00ff9c22;
+}
+
+.number{
+font-size:16px;
+}
+
+.time{
+font-size:12px;
+color:#aaa;
+}
+
+.icon{
+font-size:20px;
+}
+
+.green{
+color:#00ff9c;
+}
+
+.red{
+color:#ff4d4d;
+}
+
+.bottom{
+position:fixed;
+bottom:0;
+width:100%;
+background:#111;
+display:flex;
+justify-content:space-around;
+padding:10px;
+}
+
+.bottom a{
+color:white;
+text-decoration:none;
+font-size:14px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+Call Logs
+</div>
+
+<div class="tabs">
+
+<div class="tab active">My Calls</div>
+<div class="tab">Staff Calls</div>
+<div class="tab">Missed</div>
+
+</div>
+
+<div class="calls">
+
+<div class="call">
+<div>
+<div class="number">+91 8130990799</div>
+<div class="time">03:17 PM</div>
+</div>
+<div class="icon green">📞</div>
+</div>
+
+<div class="call">
+<div>
+<div class="number">+91 9560826797</div>
+<div class="time">03:16 PM</div>
+</div>
+<div class="icon red">📞</div>
+</div>
+
+<div class="call">
+<div>
+<div class="number">+91 9315873877</div>
+<div class="time">03:13 PM</div>
+</div>
+<div class="icon green">📞</div>
+</div>
+
+<div class="call">
+<div>
+<div class="number">+91 9810241778</div>
+<div class="time">03:12 PM</div>
+</div>
+<div class="icon red">📞</div>
+</div>
+
+</div>
+
+<div class="bottom">
+
+<a href="dashboard.html">Dashboard</a>
+<a href="calls.html">Calls</a>
+<a href="training.html">Training</a>
+<a href="performance.html">Performance</a>
+<a href="admin.html">Admin</a>
+
+</div>
+
+</body>
+</html>
