@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Settings</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+body{
+background:#0b0f19;
+font-family:Arial;
+color:white;
+margin:0;
+}
+
+.header{
+text-align:center;
+padding:20px;
+font-size:22px;
+font-weight:bold;
+}
+
+.container{
+padding:20px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+.box{
+background:#111;
+padding:20px;
+border-radius:12px;
+text-align:center;
+box-shadow:0 0 10px #00ff9c22;
+}
+
+.box h3{
+margin-top:10px;
+font-size:14px;
+}
+
+.toggle{
+margin-top:20px;
+background:#111;
+padding:20px;
+border-radius:12px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.switch{
+width:50px;
+height:25px;
+background:#00ff9c;
+border-radius:20px;
+}
+
+.bottom{
+position:fixed;
+bottom:0;
+width:100%;
+background:#111;
+display:flex;
+justify-content:space-around;
+padding:10px;
+}
+
+.bottom a{
+color:white;
+text-decoration:none;
+font-size:14px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+Settings
+</div>
+
+<div class="container">
+
+<div class="grid">
+
+<div class="box">
+📞
+<h3>Virtual Number</h3>
+</div>
+
+<div class="box">
+📄
+<h3>Plan & Invoice</h3>
+</div>
+
+<div class="box">
+👥
+<h3>Staff & Users</h3>
+</div>
+
+<div class="box">
+⚙
+<h3>API Settings</h3>
+</div>
+
+</div>
+
+<div class="toggle">
+
+Identify Caller
+
+<div class="switch"></div>
+
+</div>
+
+</div>
+
+<div class="bottom">
+
+<a href="dashboard.html">Dashboard</a>
+<a href="calls.html">Calls</a>
+<a href="leads.html">Leads</a>
+<a href="performance.html">Performance</a>
+<a href="settings.html">Settings</a>
+
+</div>
+
+</body>
+</html>
