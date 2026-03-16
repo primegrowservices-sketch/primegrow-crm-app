@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>PrimeGrow CRM</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+body{
+background:#0b0f19;
+font-family:Arial;
+color:white;
+margin:0;
+}
+
+.header{
+text-align:center;
+padding:20px;
+font-size:32px;
+font-weight:bold;
+}
+
+.header span{
+color:#00ff9c;
+}
+
+.container{
+padding:20px;
+}
+
+.profile{
+display:flex;
+align-items:center;
+margin-bottom:20px;
+}
+
+.profile img{
+width:50px;
+height:50px;
+border-radius:50%;
+margin-right:10px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+.card{
+background:linear-gradient(145deg,#111,#1a1a1a);
+padding:20px;
+border-radius:14px;
+text-align:center;
+box-shadow:0 0 20px #00ff9c33;
+}
+
+.card h3{
+margin:0;
+font-size:14px;
+}
+
+.card p{
+font-size:22px;
+margin-top:10px;
+color:#00ff9c;
+}
+
+.earning{
+margin-top:15px;
+background:#111;
+padding:20px;
+border-radius:14px;
+box-shadow:0 0 20px #00ff9c33;
+text-align:center;
+}
+
+.earning p{
+font-size:26px;
+color:#00ff9c;
+}
+
+.actions{
+margin-top:20px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+.btn{
+padding:16px;
+border-radius:10px;
+border:none;
+font-size:16px;
+cursor:pointer;
+}
+
+.call{
+background:#00ff9c;
+}
+
+.next{
+background:#ff9800;
+color:white;
+}
+
+.bottom{
+position:fixed;
+bottom:0;
+width:100%;
+background:#111;
+display:flex;
+justify-content:space-around;
+padding:10px;
+}
+
+.bottom a{
+color:white;
+text-decoration:none;
+font-size:14px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+Prime<span>Grow</span> CRM
+</div>
+
+<div class="container">
+
+<div class="profile">
+
+<img src="https://i.pravatar.cc/100">
+
+<div>
+
+<div>Welcome</div>
+<b>emp1</b>
+
+</div>
+
+</div>
+
+<h3>Today's Summary</h3>
+
+<div class="cards">
+
+<div class="card">
+<h3>Total Calls</h3>
+<p id="totalCalls">0</p>
+</div>
+
+<div class="card">
+<h3>Interested</h3>
+<p id="interestedCount">0</p>
+</div>
+
+<div class="card">
+<h3>Free Audit</h3>
+<p>05</p>
+</div>
+
+<div class="card">
+<h3>Sales Closed</h3>
+<p id="salesCount">0</p>
+</div>
+
+</div>
+
+<div class="earning" id="earningsCard">
+
+<h3>Total Earnings</h3>
+
+<p id="earningAmount">₹0</p>
+
+</div>
+
+<div class="actions">
+
+<button class="btn call" onclick="startCalling()">Start Calling</button>
+<button class="btn next" onclick="nextLead()">Next Lead</button>
+
+</div>
+
+</div>
+
+<div class="bottom">
+
+<a href="#">Dashboard</a>
+<a href="#">Calls</a>
+<a href="#">Leads</a>
+<a href="#">Contacts</a>
+<a href="#">Settings</a>
+
+</div>
+
+<script src="js/commission.js"></script>
+<script src="js/calling.js"></script>
+<script src="js/leads.js"></script>
+
+<script>
+
+let calls = localStorage.getItem("totalCalls") || 0
+document.getElementById("totalCalls").innerText = calls
+
+let interested = localStorage.getItem("interested") || 0
+document.getElementById("interestedCount").innerText = interested
+
+let sales = localStorage.getItem("sales") || 0
+document.getElementById("salesCount").innerText = sales
+
+let user = JSON.parse(localStorage.getItem("user"))
+
+if(user && user.role !== "admin"){
+document.getElementById("earningsCard").style.display="none"
+}
+
+let earning = localStorage.getItem("earnings") || 0
+document.getElementById("earningAmount").innerText = "₹" + earning
+
+</script>
+
+</body>
+</html>
