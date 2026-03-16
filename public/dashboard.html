@@ -153,12 +153,12 @@ Prime<span>Grow</span> CRM
 
 <div class="card">
 <h3>Total Calls</h3>
-<p>128</p>
+<p id="totalCalls">0</p>
 </div>
 
 <div class="card">
 <h3>Interested</h3>
-<p>24</p>
+<p id="interestedCount">0</p>
 </div>
 
 <div class="card">
@@ -168,7 +168,7 @@ Prime<span>Grow</span> CRM
 
 <div class="card">
 <h3>Sales Closed</h3>
-<p>02</p>
+<p id="salesCount">0</p>
 </div>
 
 </div>
@@ -177,15 +177,14 @@ Prime<span>Grow</span> CRM
 
 <h3>Total Earnings</h3>
 
-<p>₹1050</p>
+<p id="earningAmount">₹0</p>
 
 </div>
 
 <div class="actions">
 
-<button class="btn call">Start Calling</button>
-
-<button class="btn next">Next Lead</button>
+<button class="btn call" onclick="startCalling()">Start Calling</button>
+<button class="btn next" onclick="nextLead()">Next Lead</button>
 
 </div>
 
@@ -202,14 +201,28 @@ Prime<span>Grow</span> CRM
 </div>
 
 <script src="js/commission.js"></script>
+<script src="js/calling.js"></script>
+<script src="js/leads.js"></script>
 
 <script>
+
+let calls = localStorage.getItem("totalCalls") || 0
+document.getElementById("totalCalls").innerText = calls
+
+let interested = localStorage.getItem("interested") || 0
+document.getElementById("interestedCount").innerText = interested
+
+let sales = localStorage.getItem("sales") || 0
+document.getElementById("salesCount").innerText = sales
 
 let user = JSON.parse(localStorage.getItem("user"))
 
 if(user && user.role !== "admin"){
 document.getElementById("earningsCard").style.display="none"
 }
+
+let earning = localStorage.getItem("earnings") || 0
+document.getElementById("earningAmount").innerText = "₹" + earning
 
 </script>
 

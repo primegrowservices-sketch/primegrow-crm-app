@@ -1,31 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <title>Employee Performance</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 
 body{
-background:#0b0b0b;
+background:#0b0f19;
 color:white;
 font-family:Arial;
+padding:20px;
+}
+
+h1{
 text-align:center;
 }
 
 table{
-margin:auto;
+width:100%;
 border-collapse:collapse;
-width:80%;
+margin-top:20px;
 }
 
 th,td{
-border:1px solid #444;
 padding:10px;
+border-bottom:1px solid #333;
+text-align:center;
 }
 
 th{
-background:#00ff88;
-color:black;
+background:#111;
+}
+
+.box{
+background:#111;
+padding:20px;
+border-radius:10px;
+margin-top:30px;
+}
+
+button{
+padding:10px 20px;
+background:#00ff9c;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+input{
+padding:8px;
+width:100%;
+margin-top:10px;
 }
 
 </style>
@@ -36,101 +64,58 @@ color:black;
 
 <h1>Employee Performance</h1>
 
-<table id="perf">
+<table>
 
 <tr>
-<th>Employee</th>
 <th>Calls</th>
 <th>Interested</th>
-<th>Audit</th>
 <th>Sales</th>
-<th>Commission</th>
+<th>Earnings</th>
+</tr>
+
+<tr>
+<td id="calls">0</td>
+<td id="interested">0</td>
+<td id="sales">0</td>
+<td id="earnings">₹0</td>
 </tr>
 
 </table>
 
-<script>
 
-fetch("/performance")
-.then(res=>res.json())
-.then(data=>{
-
-let table=document.getElementById("perf")
-
-data.forEach(e=>{
-
-let row=`
-<tr>
-<td>${e.name}</td>
-<td>${e.calls}</td>
-<td>${e.interested}</td>
-<td>${e.audit}</td>
-<td>${e.sales}</td>
-<td>${e.commission}</td>
-</tr>
-`
-
-table.innerHTML+=row
-
-})
-
-})
-
-async function load(){
-
-let res = await fetch('/performance')
-let data = await res.json()
-
-let table = document.getElementById("perf")
-
-data.forEach(e=>{
-
-let row = `
-<tr>
-<td>${e.name}</td>
-<td>${e.calls}</td>
-<td>${e.interested}</td>
-<td>${e.audit}</td>
-<td>${e.sales}</td>
-<td>₹${e.commission}</td>
-</tr>
-`
-
-table.innerHTML += row
-
-})
-
-}
-
-load()
-
-</script>
+<div class="box">
 
 <h2>Commission Calculator</h2>
 
-<div style="background:#111;padding:20px;border-radius:10px;margin-top:20px;">
+<label>Total Sales</label>
 
-<label>Total Sales:</label>
-
-<input id="salesInput" type="number" placeholder="Enter total sales" style="padding:10px;width:100%;margin-top:10px;">
+<input id="salesInput" type="number" placeholder="Enter sales">
 
 <br><br>
 
-<button onclick="calculateSalary()" style="
-padding:10px 20px;
-background:#00ff9c;
-border:none;
-border-radius:6px;
-cursor:pointer;
-">
+<button onclick="calculateSalary()">
+
 Calculate Salary
+
 </button>
 
 <h3 id="salaryResult"></h3>
 
 </div>
 
+
 <script>
+
+let calls = localStorage.getItem("totalCalls") || 0
+let interested = localStorage.getItem("interested") || 0
+let sales = localStorage.getItem("sales") || 0
+let earnings = localStorage.getItem("earnings") || 0
+
+document.getElementById("calls").innerText = calls
+document.getElementById("interested").innerText = interested
+document.getElementById("sales").innerText = sales
+document.getElementById("earnings").innerText = "₹" + earnings
+
 
 function calculateSalary(){
 
@@ -149,7 +134,8 @@ commission = (sales - 10) * 200
 let totalSalary = baseSalary + commission
 
 document.getElementById("salaryResult").innerHTML =
-"Total Salary: ₹" + totalSalary + " (Commission ₹" + commission + ")"
+"Total Salary : ₹" + totalSalary +
+" (Commission ₹" + commission + ")"
 
 }
 
