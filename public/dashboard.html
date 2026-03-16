@@ -173,7 +173,7 @@ Prime<span>Grow</span> CRM
 
 </div>
 
-<div class="earning">
+<div class="earning" id="earningsCard">
 
 <h3>Total Earnings</h3>
 
@@ -202,5 +202,16 @@ Prime<span>Grow</span> CRM
 </div>
 
 <script src="js/commission.js"></script>
+
+<script>
+
+let user = JSON.parse(localStorage.getItem("user"))
+
+if(user && user.role !== "admin"){
+document.getElementById("earningsCard").style.display="none"
+}
+
+</script>
+
 </body>
 </html>
