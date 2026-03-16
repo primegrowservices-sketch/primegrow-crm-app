@@ -6,10 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
 <style>
 
 body{
-background:#0b0f19;
+background:#020617;
 font-family:Arial;
 color:white;
 margin:0;
@@ -50,11 +51,18 @@ gap:15px;
 }
 
 .card{
-background:linear-gradient(145deg,#111,#1a1a1a);
-padding:20px;
-border-radius:14px;
+background:linear-gradient(145deg,#0f172a,#020617);
+padding:22px;
+border-radius:16px;
 text-align:center;
-box-shadow:0 0 20px #00ff9c33;
+border:1px solid rgba(0,255,156,0.2);
+box-shadow:0 10px 30px rgba(0,0,0,0.6);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-3px);
+box-shadow:0 15px 35px rgba(0,255,156,0.2);
 }
 
 .card h3{
@@ -85,44 +93,109 @@ color:#00ff9c;
 .actions{
 margin-top:20px;
 display:grid;
-grid-template-columns:1fr 1fr;
+grid-template-columns:1fr 1fr 1fr;
 gap:15px;
 }
 
 .btn{
 padding:16px;
-border-radius:10px;
+border-radius:12px;
 border:none;
 font-size:16px;
 cursor:pointer;
+font-weight:bold;
+transition:0.3s;
+box-shadow:0 6px 15px rgba(0,0,0,0.3);
+}
+
+.btn:active{
+transform:scale(0.95);
 }
 
 .call{
-background:#00ff9c;
+background:linear-gradient(135deg,#00ff9c,#00c97a);
+color:#000;
+box-shadow:0 5px 15px rgba(0,255,156,0.4);
 }
 
 .next{
-background:#ff9800;
+background:linear-gradient(135deg,#ff9800,#ff6a00);
 color:white;
+box-shadow:0 5px 15px rgba(255,152,0,0.4);
+}
+
+.whatsapp{
+background:linear-gradient(135deg,#25D366,#128C7E);
+color:white;
+box-shadow:0 5px 15px rgba(37,211,102,0.4);
 }
 
 .bottom{
 position:fixed;
 bottom:0;
 width:100%;
-background:#111;
+background:#020617;
 display:flex;
 justify-content:space-around;
-padding:10px;
+padding:12px;
+border-top:1px solid #111;
 }
 
 .bottom a{
+display:flex;
+flex-direction:column;
+align-items:center;
 color:white;
 text-decoration:none;
-font-size:14px;
+font-size:12px;
+opacity:0.8;
+}
+
+.bottom a div{
+font-size:20px;
+margin-bottom:2px;
+}
+
+.bottom a:hover{
+opacity:1;
+color:#00ff9c;
+}
+
+.header{
+background:linear-gradient(90deg,#00ff9c,#00c3ff);
+padding:18px;
+font-size:26px;
+border-radius:0 0 15px 15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.4);
+}
+
+.profile{
+background:#111;
+padding:15px;
+border-radius:12px;
+box-shadow:0 0 15px #00ff9c33;
+}
+
+.card{
+transition:0.3s;
+}
+
+.card:hover{
+transform:scale(1.05);
+box-shadow:0 0 20px #00ff9c;
+}
+
+.btn{
+font-weight:bold;
+letter-spacing:0.5px;
+}
+
+.btn:hover{
+transform:scale(1.05);
 }
 
 </style>
+
 
 </head>
 
@@ -135,56 +208,50 @@ Prime<span>Grow</span> CRM
 <div class="container">
 
 <div class="profile">
-
 <img src="https://i.pravatar.cc/100">
-
 <div>
-
-<div>Welcome</div>
-<b>emp1</b>
-
+<b>Welcome</b><br>
+emp1
 </div>
-
 </div>
-
-<h3>Today's Summary</h3>
 
 <div class="cards">
 
 <div class="card">
 <h3>Total Calls</h3>
-<p id="totalCalls">0</p>
+<p>0</p>
 </div>
 
 <div class="card">
 <h3>Interested</h3>
-<p id="interestedCount">0</p>
+<p>0</p>
 </div>
 
 <div class="card">
 <h3>Free Audit</h3>
-<p>05</p>
+<p>0</p>
 </div>
 
 <div class="card">
 <h3>Sales Closed</h3>
-<p id="salesCount">0</p>
+<p>0</p>
 </div>
-
-</div>
-
-<div class="earning" id="earningsCard">
-
-<h3>Total Earnings</h3>
-
-<p id="earningAmount">₹0</p>
 
 </div>
 
 <div class="actions">
 
-<button class="btn call" onclick="startCalling()">Start Calling</button>
-<button class="btn next" onclick="nextLead()">Next Lead</button>
+<button class="btn call">
+Start Calling
+</button>
+
+<button class="btn next">
+Next Lead
+</button>
+
+<button class="btn whatsapp">
+WhatsApp
+</button>
 
 </div>
 
@@ -192,11 +259,30 @@ Prime<span>Grow</span> CRM
 
 <div class="bottom">
 
-<a href="#">Dashboard</a>
-<a href="#">Calls</a>
-<a href="#">Leads</a>
-<a href="#">Contacts</a>
-<a href="#">Settings</a>
+<a href="#">
+<div>🏠</div>
+<span>Dashboard</span>
+</a>
+
+<a href="#">
+<div>📞</div>
+<span>Calls</span>
+</a>
+
+<a href="#">
+<div>📋</div>
+<span>Leads</span>
+</a>
+
+<a href="#">
+<div>📊</div>
+<span>Performance</span>
+</a>
+
+<a href="#">
+<div>⚙</div>
+<span>Admin</span>
+</a>
 
 </div>
 
@@ -205,6 +291,18 @@ Prime<span>Grow</span> CRM
 <script src="js/leads.js"></script>
 
 <script>
+
+function sendWhatsApp(){
+
+let number = "919999999999";
+
+let message = "Hello, we checked your Google Business profile and found improvements that can help you get more customers. Would you like a free audit?";
+
+let url = "https://wa.me/"+number+"?text="+encodeURIComponent(message);
+
+window.open(url,"_blank");
+
+}
 
 let calls = localStorage.getItem("totalCalls") || 0
 document.getElementById("totalCalls").innerText = calls
